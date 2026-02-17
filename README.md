@@ -4,6 +4,16 @@ A native macOS dialog for [Claude Code](https://docs.anthropic.com/en/docs/claud
 
 ![claude-dialog screenshot](screenshot.png)
 
+## Why
+
+When Claude Code needs your input, it normally shows a terminal widget that requires you to be looking at that specific terminal window. That's fine for interactive sessions — but what about:
+
+- **Long-running tasks** where Claude hits a decision point 20 minutes in, while you're in a different app
+- **Scheduled or background sessions** (via cron, CI, or scripts) that need human input to proceed
+- **Multiple concurrent sessions** where you want questions to pop up as native notifications you can answer from anywhere
+
+`claude-dialog` solves this by intercepting questions and showing them as a **floating macOS panel that appears above all windows** — even full-screen apps. You see it immediately, answer with a click or keyboard, and Claude continues. No need to hunt for the right terminal tab.
+
 ## How it works
 
 Claude Code has a [hooks system](https://docs.anthropic.com/en/docs/claude-code/hooks) that lets you intercept tool calls. `claude-dialog` is a `PreToolUse` hook that:
