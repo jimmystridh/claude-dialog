@@ -1,0 +1,31 @@
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build release binary
+        run: swift build -c release
+
+      - name: Package binary
+        run: |
+          cp .build/release/claude-dialog claude-dialog
+          zip claude-dialog-macos-arm64.zip claude-dialog
+
+      - name: Create GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "${{ github.ref_name }}" \
+            claude-dialog-macos-arm64.zip \
+            --title "${{ github.ref_name }}" \
+            --generate-notes
