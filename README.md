@@ -2,7 +2,7 @@
 
 A native macOS dialog for [Claude Code](https://docs.anthropic.com/en/docs/claude-code)'s `AskUserQuestion` tool. Instead of answering questions inline in the terminal, a floating SwiftUI panel appears — with radio buttons, checkboxes, free-text input, and full keyboard navigation.
 
-<img width="460" alt="claude-dialog screenshot" src="https://img.shields.io/badge/macOS-14%2B-blue?style=flat-square&logo=apple"> <!-- replace with actual screenshot -->
+![claude-dialog screenshot](screenshot.png)
 
 ## How it works
 
